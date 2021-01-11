@@ -1,0 +1,77 @@
+<div style="padding-bottom: 10px">
+    <mat-form-field class="input-full-width">
+        <mat-select disabled="{{!(formContextState === contextState.NEW)}}" placeholder="Computer Type"
+            [(ngModel)]="currentObjectForEdit.computerTypeId" name="computerTypeId"
+            (selectionChange)="onChange($event)" >
+            <mat-option *ngFor="let computerType of computerTypes" [value]="computerType.computerTypeId">
+                {{ computerType.name }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div *ngIf="showElements.processor">
+        <mat-form-field class="input-full-width">
+            <input disabled="{{!((formContextState === contextState.EDIT) || (formContextState === contextState.NEW))}}"
+                matInput placeholder="Processor" [(ngModel)]="currentObjectForEdit.processor"
+                [ngModelOptions]="{standalone: true}" maxlength="100">
+        </mat-form-field>
+    </div>
+    <div *ngIf="showElements.brand">
+        <mat-form-field class="input-full-width">
+            <input disabled="{{!((formContextState === contextState.EDIT) || (formContextState === contextState.NEW))}}"
+                matInput placeholder="Brand" [(ngModel)]="currentObjectForEdit.brand"
+                [ngModelOptions]="{standalone: true}" maxlength="100"> 
+        </mat-form-field>
+    </div>
+    <div *ngIf="showElements.usbPorts">
+        <mat-form-field class="input-full-width">
+            <input type="number"
+                disabled="{{!((formContextState === contextState.EDIT) || (formContextState === contextState.NEW))}}"
+                matInput placeholder="Usb Ports" [(ngModel)]="currentObjectForEdit.usbPorts"
+                [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+    </div>
+    <div *ngIf="showElements.ramSlots">
+        <mat-form-field class="input-full-width">
+            <input type="number"
+                disabled="{{!((formContextState === contextState.EDIT) || (formContextState === contextState.NEW))}}"
+                matInput placeholder="Ram Slots" [(ngModel)]="currentObjectForEdit.ramSlots"
+                [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+    </div>
+    <div *ngIf="showElements.formFactor">
+        <mat-form-field class="input-full-width">
+            <mat-select
+                disabled="{{!((formContextState === contextState.EDIT) || (formContextState === contextState.NEW))}}"
+                placeholder="Form Factor" [(ngModel)]="currentObjectForEdit.formFactor" name="formFactor">
+                <mat-option *ngFor="let formFactor of formFactors" [value]="formFactor.formFactorId">
+                    {{ formFactor.type }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div *ngIf="showElements.quantity">
+        <mat-form-field class="input-full-width">
+            <input type="number"
+                disabled="{{!((formContextState === contextState.EDIT) || (formContextState === contextState.NEW))}}"
+                matInput placeholder="Quantity" [(ngModel)]="currentObjectForEdit.quantity"
+                [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+    </div>
+    <div *ngIf="showElements.screenSize">
+        <mat-form-field class="input-full-width">
+            <mat-select
+                disabled="{{!((formContextState === contextState.EDIT) || (formContextState === contextState.NEW))}}"
+                placeholder="Screen Size" [(ngModel)]="currentObjectForEdit.screenSizeId" name="screenSizeId">
+                <mat-option *ngFor="let screenSize of screenSizes" [value]="screenSize.screenSizeId">
+                    {{ screenSize.screenSize1 }}
+                </mat-option>
+            </mat-select>
+
+        </mat-form-field>
+    </div>
+
+    <br />
+    <h2>Set computer active/inactive</h2>
+    <mat-checkbox [(ngModel)]="currentObjectForEdit.isActive" [checked]="currentObjectForEdit.isActive">Is Active
+    </mat-checkbox>
+</div>

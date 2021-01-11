@@ -1,0 +1,308 @@
+.mat-row
+{
+    min-height:15px;
+    white-space:nowrap;
+    height:30px;
+}
+
+.mat-cell, .mat-header-cell
+{
+    font-size:12px;
+    border:5.00px solid transparent;
+}
+
+.mat-row:hover
+{
+    background-color:#ADD8E6;
+    cursor:grab;
+}
+
+.mat-header-row
+{
+    position:sticky;
+    top:0;
+    background:#FFF;
+    z-index:10;
+}
+
+.active-row{
+    font-weight: 100;
+}
+
+.selected-menu-item
+{
+    background-color:rgba(158,158,158,0.8);
+}
+
+md-sidenav.md-locked-open
+{
+    width:250px;
+    min-width:250px;
+    max-width:250px;
+}
+
+.mat-header-cell
+{
+    font-size:12px;
+    font-weight:700;
+}
+
+.success-row
+{
+    background-color:#aae2aa!important;
+}
+
+.success-row:hover
+{
+    background-color:#41ca41!important;
+}
+
+.failure-row
+{
+    background-color:#f1b6b6!important;
+}
+
+.failure-row:hover
+{
+    background-color:#d69292!important;
+}
+
+.not-found-row
+{
+    background-color:#fafad2!important;
+}
+
+.not-found-row:hover
+{
+    background-color: #EFEF9E!important;
+}
+
+.retry-row
+{
+    background-color:#ADD8E6!important;
+}
+
+.retry-row:hover
+{
+    background-color:#5454e6!important;
+}
+
+.csv-download-button
+{
+    font-size:30px;
+    cursor:pointer;
+}
+
+.csv-download-button-container
+{
+    z-index:80;
+    position:absolute;
+    color:#000;
+    opacity:0.5;
+    cursor:pointer;
+}
+
+.csv-download-button-container:hover
+{
+    opacity:1;
+    width: 100px;
+}
+
+.top-corner
+{
+    position:absolute;
+    top:10px;
+    left:100px;
+}
+
+mat-row:nth-child(even)
+{
+    background-color:rgba(0,0,255,0.05);
+}
+
+.filter-button
+{
+    line-height:12px;
+    width:5px;
+    font-size:8pt;
+    margin-top:1px;
+    margin-right:2px;
+    position:absolute;
+    top:35px;
+    right:10px;
+    z-index:100;
+}
+
+.table-with-filter
+{
+    padding-top:60px;
+}
+
+.table-truncated-width,.table-full-width
+{
+    height:calc(75vh);
+    overflow-y:inherit;
+    overflow-x:inherit;
+    display:inline-block;
+}
+
+.table-truncated-width
+{
+    height:calc(75vh);
+}
+
+.table-no-records-display
+{
+    padding-top:100px;
+    color:blue;
+    text-align:center;
+}
+
+.filter-panel
+{
+    cursor:pointer;
+    z-index:3;
+    right:5px;
+    top:0;
+    height:150px;
+    width:500px;
+    position:absolute;
+}
+
+.mat-column-action
+{
+    flex:0 0 45px;
+}
+
+.mat-table
+{
+    display:table;
+    width:100%;
+}
+
+.table-full-width,.input-full-width
+{
+    width:100%;
+}
+
+.mat-table{
+    display: block !important;
+    max-width: 900px;
+    min-width: 900px;
+}
+
+.details-panel{
+    top: 30px;
+    position:absolute;
+    height: 750px;
+    overflow-y: auto;
+    min-width: 600px;
+    max-width: 600px;
+}
+
+.currentSelectedRow{
+    filter: brightness(90%)
+}
+
+/* active tab */
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label {
+    padding: 15px;
+    min-width: 0px;
+}
+
+.availableNotes{
+    color: blue;
+    font-weight: bolder
+}
+
+.mat-column-tagName{
+    min-width: 150px;
+    max-width: 150px;
+}
+
+
+.mat-column-featureType{
+    width: 80px
+}
+
+.mat-column-runTime, .mat-column-totalTime{
+    max-width: 70px;
+}
+
+.mat-column-features{
+    max-width:125px;
+}
+
+.mat-column-hasBeenResent{
+    max-width:15px;
+}
+
+.mat-column-featureType{
+    max-width:50px;
+}
+
+.mat-column-startTime, .mat-column-finishTime{
+    max-width:110px;
+}
+
+.mat-column-reportTypes, .customerReference{
+    padding-right: 5px;
+}
+
+.mat-row {
+    padding-left: 4px !important;
+}
+
+
+.mat-column-runTime, .mat-column-elapsedTime {
+    max-width: 45px;
+    min-width: 45px;
+}
+
+.mat-column-currentStatus {
+    max-width: 150px;
+    min-width: 150px;
+}
+
+.mat-column-currentStatus {
+    max-width: 250px;
+    min-width: 250px;
+}
+
+.mat-column-enteredQueueTime, .mat-column-startTime {
+    max-width: 200px;
+    min-width: 200px;
+}
+
+
+.mat-column-message{
+    min-width: 200px;
+}
+
+.mat-column-timeGenerated{
+    max-width: 110px;
+}
+
+.mat-column-source, .mat-column-entryType{
+    max-width: 100px;
+}
+
+.success-row{
+    background-color: lightgreen!important;
+}
+
+.warning-row{
+    background-color: #FFFF99!important;
+}
+
+.warning-row:hover{
+    background-color: rgb(224, 224, 63)!important;
+}
+
+.error-row{
+    background-color: #FFA07A!important;
+}
+
+.error-row:hover{
+    background-color: rgb(216, 91, 41)!important;
+}

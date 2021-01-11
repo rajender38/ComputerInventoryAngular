@@ -1,0 +1,32 @@
+<div style="padding-bottom: 10px">
+    <mat-form-field class="input-full-width">
+        <input disabled="{{!((formContextState === contextState.EDIT) || (formContextState === contextState.NEW))}}"
+            matInput placeholder="Computer type" [(ngModel)]="currentObjectForEdit.name"
+            [ngModelOptions]="{standalone: true}" maxlength="100">
+    </mat-form-field>
+    <h2>Select fields to display</h2>
+    <mat-checkbox [(ngModel)]="currentObjectForEdit.brand" [checked]="currentObjectForEdit.brand">Brand
+    </mat-checkbox>
+    <br />
+    <mat-checkbox [(ngModel)]="currentObjectForEdit.processor" [checked]="currentObjectForEdit.processor">Processor
+    </mat-checkbox>
+    <br />
+    <mat-checkbox [(ngModel)]="currentObjectForEdit.usbPorts" [checked]="currentObjectForEdit.usbPorts">Usb Ports
+    </mat-checkbox>
+    <br />
+    <mat-checkbox [(ngModel)]="currentObjectForEdit.ramSlots" [checked]="currentObjectForEdit.ramSlots">Ram Slots
+    </mat-checkbox>
+    <br />
+    <mat-checkbox [(ngModel)]="currentObjectForEdit.formFactor" [checked]="currentObjectForEdit.formFactor">Form Factor
+    </mat-checkbox>
+    <br />
+    <mat-checkbox [(ngModel)]="currentObjectForEdit.quantity" [checked]="currentObjectForEdit.quantity">Quantity
+    </mat-checkbox>
+    <br />
+    <mat-checkbox [(ngModel)]="currentObjectForEdit.screenSize" [checked]="currentObjectForEdit.screenSize">Screen Size
+    </mat-checkbox>
+    <br />
+    <h2>Set computer active/inactive</h2>
+    <mat-checkbox [(ngModel)]="currentObjectForEdit.isActive" [checked]="currentObjectForEdit.isActive">Is Active
+    </mat-checkbox>
+</div>

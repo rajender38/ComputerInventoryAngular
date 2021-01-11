@@ -1,0 +1,39 @@
+
+#wrapper {
+    width: calc(95vw);
+}
+
+#left {
+    display: inline-block;
+    width: 1200px
+}
+
+#right {
+    display: inline-block;
+    width: calc(40vw);
+}
+
+#right > mat-card {
+    height: 750px;
+}
+
+#details-wrapper {
+    display: flex;
+}
+
+.details-card-no-tabs{
+    width: 300px!important;
+    /* height: 800px !important; */
+    overflow-y: scroll;
+}
+
+.close-btn {
+    display:flex;
+    justify-content:flex-end;
+    padding:0;
+}
+
+.btn-container {
+    width: 100%;
+}
+

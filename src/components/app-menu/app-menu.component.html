@@ -1,0 +1,30 @@
+<span class="operation-menu-full-size">
+    <ng-container *ngFor="let routerConfig of routerConfigs">
+  <button *ngIf="routerConfig.displayLevel === 1" [routerLink]="routerConfig.routerLink" [queryParams]="{ filter: 'new' }"  [skipLocationChange]="true" class="app-button"
+          mat-button
+          routerLinkActive="mat-accent">{{routerConfig.displayText}}</button>
+</ng-container>
+<button mat-button [matMenuTriggerFor]="menu">Masters</button>
+<mat-menu #menu="matMenu">
+<ng-container *ngFor="let routerConfig of routerConfigs">
+  <button style="width: 100%" *ngIf="routerConfig.displayLevel === 2" [routerLink]="routerConfig.routerLink" [queryParams]="{ filter: 'new' }"
+          class="app-button"
+          mat-button
+          [skipLocationChange]="true"
+          routerLinkActive="mat-accent">{{routerConfig.displayText}}</button>
+</ng-container>
+</mat-menu>
+</span>
+
+<mat-menu #appMenu="matMenu">
+  <span>
+    <button *ngFor="let routerConfig of routerConfigs" [queryParams]="{ filter: 'new' }" [routerLink]="routerConfig.routerLink" [skipLocationChange]="true" class="app-button"
+            mat-button
+            routerLinkActive="mat-accent">{{routerConfig.displayText}}</button>
+    </span>
+</mat-menu>
+
+<button mat-icon-button [matMenuTriggerFor]="appMenu" class="operation-menu-miniature">
+<mat-icon>menu</mat-icon>
+</button>
+

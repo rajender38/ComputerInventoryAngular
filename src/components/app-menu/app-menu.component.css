@@ -1,0 +1,7 @@
+@media (max-width: 1600px) {
+    .operation-menu-full-size     { display: none; }
+}
+
+@media (min-width: 1600px) {
+    .operation-menu-miniature     { display: none; }
+}

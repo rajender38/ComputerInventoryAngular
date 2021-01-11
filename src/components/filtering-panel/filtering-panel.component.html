@@ -1,0 +1,96 @@
+<mat-expansion-panel [(expanded)]="isFilterPanelExpanded">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Filter Data
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <span *ngFor="let parameter of filterParams">
+                                <mat-checkbox [(ngModel)]="parameter.filterEnabled"></mat-checkbox>
+
+                                <span [ngSwitch]="parameter.fieldDisplayType" style="width: 500px">
+
+                                    <mat-form-field *ngSwitchCase="'date'" style="width: 500px">
+                                        <input style="width: 50px" type="date" matInput
+                                               [placeholder]="'Start Date: ' +parameter.headName"
+                                               [(ngModel)]="parameter.startDate" min="{{parameter.min}}"
+                                               max="{{parameter.max}}"
+                                               (ngModelChange)="parameter.filterEnabled = true">
+                                        <span style="padding-left: 10px; padding-right: 10px">To</span>
+                            <input style="width: 50px" type="date" matInput
+                                   [placeholder]=" 'End Date: ' + parameter.headName" [(ngModel)]="parameter.endDate"
+                                   min="{{parameter.min}}" max="{{parameter.max}}"
+                                   (ngModelChange)="parameter.filterEnabled = true">
+                            <span>{{parameter.endDate}}</span>
+                            </mat-form-field>
+
+                            <span *ngSwitchCase="'dateTime'">
+                                        <mat-form-field>
+                                            <input style="width: 200px" type="date" matInput
+                                                   [placeholder]="parameter.headName"
+                                                   [(ngModel)]="parameter.startDate" min="{{parameter.min}}"
+                                                   max="{{parameter.max}}"
+                                                   (ngModelChange)="parameter.filterEnabled = true">
+                                        </mat-form-field>
+                                        <span style="padding-left: 10px; padding-right: 10px">To</span>
+                            <mat-form-field>
+                                <input style="width: 200px" type="date" matInput [placeholder]="parameter.headName"
+                                       [(ngModel)]="parameter.endDate" min="{{parameter.min}}"
+                                       max="{{parameter.max}}" (ngModelChange)="parameter.filterEnabled = true">
+                            </mat-form-field>
+                            </span>
+
+                            <span *ngSwitchCase="'number'" style="width: 130px">
+
+                                        <mat-form-field>
+                                            <input min='0' style="width: 50px" type="number" matInput
+                                                   [placeholder]="parameter.headName"
+                                                   [(ngModel)]="parameter.minValue">
+                                        </mat-form-field>
+                                        <span style="padding-left: 10px; padding-right: 10px">To</span>
+                            <mat-form-field>
+                                <input style="width: 50px" type="number" matInput [placeholder]="parameter.headName"
+                                       [(ngModel)]="parameter.maxValue">
+                            </mat-form-field>
+                            </span>
+       
+
+                            <!-- <span *ngSwitchCase="'publishedStatus'" style="width: 100%">
+                                        <mat-form-field>
+                                            <mat-select placeholder="Publish Status" [name]="featureTypeFilterValue"
+                                                        [(ngModel)]="parameter.filterValue"
+                                                        (ngModelChange)="parameter.filterEnabled = true">
+                                                <mat-option value="">** All **</mat-option>
+                                                <mat-option value="Published">Published</mat-option>
+                                                <mat-option value="Unpublished">Unpublished</mat-option>
+                                                <mat-option value="Replaced">Replaced</mat-option>
+                                                <mat-option value="Decomissioned">Decomissioned</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </span> -->
+
+                            <mat-form-field *ngSwitchCase="'boolean'">
+                                <mat-select [placeholder]="parameter.headName" [(ngModel)]="parameter.filterValue">
+                                    <mat-option value="false">No</mat-option>
+                                    <mat-option value="true">Yes</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field *ngSwitchDefault>
+                                <input matInput [placeholder]="parameter.headName" [(ngModel)]="parameter.filterValue"
+                                       (ngModelChange)="parameter.filterEnabled = parameter.filterValue.length !== 0 ? true : false">
+                            </mat-form-field>
+                            </span>
+                            <br/>
+                            </span>
+
+    <br/>
+    <button mat-raised-button (click)="applyFilter.emit(); isFilterPanelExpanded = false" color="primary">
+        <mat-icon>filter_list</mat-icon>
+        Filter
+    </button>
+    <button mat-raised-button (click)="clearFilter.emit()" color="default">
+        <mat-icon (click)="clearFilter.emit()">delete_sweep</mat-icon>
+        Clear Filter
+    </button>
+</mat-expansion-panel>

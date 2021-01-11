@@ -1,0 +1,50 @@
+<div *ngIf="isLoading" class='content-loading-panel'>
+    <mat-spinner class="content-loading-spinner"></mat-spinner>
+</div>
+<div id="details-wrapper">
+    <div>
+        <div>
+            <div class="filtering-panel">
+                <mat-accordion *ngIf="enableDataFiltering">
+                    <app-filtering-panel [filterParams]="filterParams" (applyFilter)="applyFilter()"
+                        (clearFilter)="clearFilter()"></app-filtering-panel>
+                </mat-accordion>
+                <span *ngIf="showResendPanel">
+                    <button mat-raised-button color="primary" style="margin: 5px">Resend
+                        Selected</button>
+                </span>
+            </div>
+
+            <app-data-display-table [dataSet]="dataSet" [displayDetailPane]="displayDetailPane"
+                [allowRowSelection]="allowRowSelection" [currentObjectForEdit]="currentObjectForEdit"
+                [moduleName]="moduleName" [columnDefs]="columnDefs" [enableDataFiltering]="enableDataFiltering"
+                [displayedContextItems]="displayedContextItems" (updateRecord)="updateRecord($event)"
+                (addNewRecord)="addNewRecord()"
+                (sortData)="sortData($event)" (onRowClicked)="onRowClicked($event)"></app-data-display-table>
+            <div style="display:inline-block; width: 97%">
+                <mat-paginator style="background: none" *ngIf="pageSize <= totalRecords" [length]="totalRecords"
+                    [pageIndex]="currentPage" [pageSize]="pageSize" (page)="pageChange($event)"></mat-paginator>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="currentObjectForEdit">
+        <mat-card class="details-card details-card-no-tabs">
+            <button mat-icon-button color="primary" (click)="currentObjectForEdit=null"
+                matTooltip="Close the current details panel">
+                <mat-icon aria-label="">close</mat-icon>
+            </button>
+            <mat-card-subtitle>
+                <h3 *ngIf="formContextState === contextState.EDIT">Editing Record</h3>
+                <h3 *ngIf="formContextState === contextState.NEW">New Record</h3>
+            </mat-card-subtitle>
+            <app-edit-computer-type [formContextState]="formContextState" [currentObjectForEdit]="currentObjectForEdit">
+            </app-edit-computer-type>
+            <div class="button-row"
+                *ngIf="formContextState === contextState.EDIT || formContextState === contextState.NEW"
+                style="padding-top:30px">
+                <button mat-button color="primary" (click)="processSave()">Save</button>
+                <button mat-button color="warn" (click)="processCancel()">Cancel</button>
+            </div>
+        </mat-card>
+    </div>
+</div>

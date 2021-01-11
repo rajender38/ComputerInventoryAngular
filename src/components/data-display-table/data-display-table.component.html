@@ -1,0 +1,54 @@
+<mat-table #table [dataSource]="dataSet" matSort (matSortChange)="sortData.emit($event)"
+    [ngClass]="{'table-with-filter': enableDataFiltering}" [ngStyle]="{'width': displayDetailPane ? '50%' : '100%'}">
+    <ng-container matColumnDef="rowSelector" style="overflow: hidden">
+        <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+        <mat-cell style="overflow: visible" *matCellDef="let element">
+            <mat-checkbox (change)="rowSelected($event, element)" [checked]="recordHasBeenSelected(element)">
+            </mat-checkbox>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container *ngFor="let disCol of columnsToDisplay(); let colIndex = index" matColumnDef="{{disCol}}">
+        <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="100px">{{columnToTitle()[disCol]}}</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{formatFieldForDisplay(element[disCol], disCol)}}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+        <!-- <mat-header-cell style="cursor: pointer;" href="#" *matHeaderCellDef (click)="reloadPage.emit()"
+            matTooltip="Refresh currently displayed data">
+            <i class="material-icons">
+                refresh
+            </i>
+        </mat-header-cell> -->
+        <mat-header-cell style="cursor: pointer;" href="#" *matHeaderCellDef (click)="reloadPage.emit()"
+            matTooltip="Add new record">
+            <button mat-menu-item (click)="addNewRecord.emit()" *ngIf="displayContextItem('add')">
+                <mat-icon>add</mat-icon>
+                <span>Add New</span>
+            </button>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+            <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="displayedContextItems.length > 0">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="updateRecord.emit(element)" *ngIf="displayContextItem('edit')">
+                    <mat-icon>mode_edit</mat-icon>
+                    <span>Edit</span>
+                </button>
+                <button mat-menu-item (click)="addNewRecord.emit(element)" *ngIf="displayContextItem('add')">
+                    <mat-icon>add</mat-icon>
+                    <span>Add New</span>
+                </button>
+
+            </mat-menu>
+        </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="columnsToDisplay(true)"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columnsToDisplay(true);" [ngClass]="row.rowDisplayClass"
+        [class.currentSelectedRow]="dataSet.indexOf(currentObjectForEdit) === dataSet.indexOf(row)"
+        (click)="onRowClicked.emit(row)">
+    </mat-row>
+
+</mat-table>
