@@ -6,7 +6,8 @@ import { Computer } from "../../common/model-definitions";
 import { ComputerTypeService } from "../../services/computerType.service";
 import { FormFactorService } from "../../services/formFactor.service";
 import { SecreenSizeService } from "../../services/screenSize.service";
-
+import { ContextState } from '../../common/context-state.enum';
+import * as _ from 'lodash' 
 @Component({
   selector: 'app-computer-list',
   templateUrl: './computer-list.component.html',
@@ -64,23 +65,12 @@ export class ComputerListComponent extends BaseComponent implements OnInit {
         required: false,
         display: true
       },
-      // {
-      //   columnDef: 'formFactor',
-      //   headName: 'Form Factor',
-      //   required: true
-      // },
       {
         columnDef: 'quantity',
         headName: 'Quantity',
         required: false,
         display: true
       },
-      // {
-      //   columnDef: 'screenSize',
-      //   headName: 'Screen Size',
-      //   required: true
-      // }
-      // ,
       {
         columnDef: 'isActive',
         headName: 'Is Active',
@@ -106,7 +96,13 @@ export class ComputerListComponent extends BaseComponent implements OnInit {
   ngOnInit(): void {
     this.retrieveData('', '', this.pageSize, 0);
   }
+  updateRecord(record) {
+    debugger;
+    this.displayControls(record.computerTypeId);
+    this.formContextState = ContextState.EDIT;
+    this.currentObjectForEdit = _.clone(record);
 
+  }
   onSelectChange(event) {
     debugger;
     this.displayControls(event.value);
