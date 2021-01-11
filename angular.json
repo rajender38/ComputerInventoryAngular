@@ -17,6 +17,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "lodash"
+            ],
             "outputPath": "dist/ComputersInventory",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -28,6 +31,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -91,6 +95,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -124,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "ComputersInventory"
+  "defaultProject": "ComputersInventory",
+  "cli": {
+    "analytics": "569997ca-c275-44f2-90cc-7265c92bcd6d"
+  }
 }
